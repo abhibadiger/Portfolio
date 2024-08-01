@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mistral', cursive;
+  background-color: rgb(0 0 0);
+  color: antiquewhite;
+}
+
+
+.name{
+  font-size: 5rem;
+  text-align: center;
+}
+
+.lamp_image{
+  max-width: 100%;
+}
+
