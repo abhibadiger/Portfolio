@@ -1,51 +1,62 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+// import "./style.css"
 
+const canvas = document.getElementById('webgl');
 const scene = new THREE.Scene()
-// scene.add(new THREE.AxesHelper(10))
-
-const light = new THREE.PointLight(0xCCF6FF,100)
-light.position.set(2, 4, 5)
-light.castShadow = true
-scene.add(light)
-
-const light2 = new THREE.PointLight(0xCCFFE6,100)
-light2.position.set(2, 4, -5)
-light2.castShadow = true
-scene.add(light2)
-
 const camera = new THREE.PerspectiveCamera(
   75,
-  window.innerWidth / window.innerHeight,
+  canvas.clientWidth / canvas.clientHeight,
   0.1,
   1000
 )
-camera.position.z = 3
-camera.position.x = 2
-camera.position.y = 2
+camera.position.x = 0
+camera.position.y = 1
+camera.position.z = 4
 
-const canvas = document.getElementsByTagName('canvas')[0];
-const renderer = new THREE.WebGLRenderer({canvas})
-renderer.setSize(window.innerWidth, window.innerHeight)
+// Lights
+const light = new THREE.PointLight(0xFFFFFF,100)
+light.position.set(0, 3, 5)
+light.castShadow = true
+scene.add(light)
+
+const light2 = new THREE.PointLight(0xFFA6A6,100)
+light2.position.set(0, 3, -5)
+light2.castShadow = true
+scene.add(light2)
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance"})
+renderer.setSize(canvas.clientWidth, canvas.clientHeight)
 renderer.render(scene,camera)
 renderer.shadowMap.enabled = true
-renderer.setClearColor(0x000000,0)
+renderer.setClearColor(0xffffff,0)
+canvas.appendChild(renderer.domElement)
 
-const controls = new OrbitControls(camera, renderer.domElement)
+// Re-Size event handler
+window.addEventListener('resize', onWindowResize, false)
+function onWindowResize() {
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight)
+  camera.aspect = canvas.clientWidth / canvas.clientHeight
+  camera.updateProjectionMatrix();
+  render()
+}
+
+// OrbitControls
+const controls = new ArcballControls(camera, renderer.domElement)
 controls.enableDamping = true
 controls.enableRotate = true
 controls.enableZoom = false
 controls.enablePan = false
-controls.autoRotate = true
-controls.autoRotateSpeed = 5
 
+// FBXLoader 
 const fbxLoader = new FBXLoader()
 fbxLoader.load(
     '3.fbx',
     (object) => {
         object.scale.set(.25, .25, .25)
-        object.position.set(0, -2, 0)
+        object.position.set(0,-2, 0)
         scene.add(object)
     },
     (xhr) => {
@@ -56,24 +67,15 @@ fbxLoader.load(
     }
 )
 
-window.addEventListener('resize', onWindowResize, false)
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight
-  camera.updateProjectionMatrix()
-  renderer.setSize(window.innerWidth, window.innerHeight)
-  render()
-}
-
-function animate() {
-  requestAnimationFrame(animate)
-
-  controls.update()
-
-  render()
-}
-
 function render() {
   renderer.render(scene, camera)
 }
 
+function animate() {
+  requestAnimationFrame(animate)
+  controls.update()
+  render()
+}
 animate()
+
+

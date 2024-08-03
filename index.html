@@ -7,14 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      padding: 0%;
+      margin: 0%;
+      max-width: 100%;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="content">
-    <canvas class="webgl" width="100"></canvas>
+  <main class="content">
+    <!-- NAME -->
     <h1 class="name">Abhishek Badiger</h1>
-    <img src="lamp5.png" alt="lamp image" class="lamp_image">
-  </div>
+    <!-- CANVAS -->
+    <div id="webgl" class="webgl-canvas"></div>
+    <!-- IMAGE -->
+    <h2 class="title">3D MODEL PROGRESS</h2>
+    <img src="lamp5.png" alt="asgas" class="lamp_image">
+    <!-- VIDEO -->
+    <h2 class="title">How I Animate Things</h2>
+    <video class="video" src="drum.mp4" controls autoplay loop></video>
+  </main>
   <script type="module" src="/main.js"></script>
 </body>
 
