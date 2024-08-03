@@ -1,18 +1,63 @@
-* {
+body {
   margin: 0;
   padding: 0;
   font-family: 'Mistral', cursive;
-  background-color: rgb(0 0 0);
-  color: antiquewhite;
+  background-color: rgb(255 255 255);
+  color: cadetblue;
+  background: radial-gradient(circle at center center,#171717 0,#050505 58%) no-repeat;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
+.content {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.webgl-canvas {
+  outline: none;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
 
 .name{
   font-size: 5rem;
   text-align: center;
 }
 
-.lamp_image{
-  max-width: 100%;
+.title {
+  font-size: 3rem;
+  text-decoration: underline wavy;
+  text-underline-offset: 10px;
+  padding: 15px 0;
 }
 
+.lamp_image{
+  max-width: 80%;
+  border: 5px solid #171717;
+  border-radius: 2vh;
+}
+
+.video {
+  border: 5px solid #171717;
+  border-radius: 2vh;
+  width: 80%;
+  height: auto;
+}
+
+@media screen and (max-width : 480px){
+  .webgl-canvas {
+    height: 300px;
+    width: 100%;
+  }
+
+  .name{
+    font-size: 2rem;
+    text-align: center;
+  }
+}
