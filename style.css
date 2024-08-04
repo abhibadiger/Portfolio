@@ -1,63 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Mistral', cursive;
-  background-color: rgb(255 255 255);
-  color: cadetblue;
-  background: radial-gradient(circle at center center,#171717 0,#050505 58%) no-repeat;
+  font-family: "Gupter", serif;
+  background: rgb(26 26 26);
+  background: aliceblue;
+  color: #2D2D2D;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
 }
 
-.content {
-  max-width: 100%;
+* {
+  text-align: center;
+}
+
+main {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  text-align: left;
+}
+
+.content {
+  max-width: 80vw;
 }
 
 .webgl-canvas {
   outline: none;
-  height: 100vh;
-  width: 100vw;
+  height: 60vh;
+  width: 80vw;
   margin: 0;
   padding: 0;
+  box-shadow: 
+    5px 5px 10px black;
+  border-radius: 2vh;
+  background: aliceblue;
+  margin-bottom: 15px;
+  
+}
+
+.first-box {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 2rem;
+  background-color: aliceblue;
+  margin-bottom: 10px;
+}
+
+.top-name{
+  font-size: 7vw;
+  text-align: left;
 }
 
 .name{
-  font-size: 5rem;
-  text-align: center;
+  font-size: 5.5vw;
+  text-align: left;
 }
 
 .title {
-  font-size: 3rem;
-  text-decoration: underline wavy;
-  text-underline-offset: 10px;
+  font-size: 4vw;
   padding: 15px 0;
 }
 
 .lamp_image{
-  max-width: 80%;
-  border: 5px solid #171717;
   border-radius: 2vh;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  box-shadow: 
+    5px 5px 10px black;
 }
 
 .video {
   border: 5px solid #171717;
-  border-radius: 2vh;
-  width: 80%;
+  width: 100%;
   height: auto;
+}
+
+.icons {
+  width: 30px;
+  height: auto;
+  margin: 0.25rem;
+}
+
+.split-images {
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  display: 80vw;
+  gap: 10px;
+  
 }
 
 @media screen and (max-width : 480px){
   .webgl-canvas {
-    height: 300px;
+    height: 20vh;
     width: 100%;
   }
 
   .name{
-    font-size: 2rem;
-    text-align: center;
+    font-size: 3vw;
+  }
+
+  .title {
+    font-size: 3vw;
+    padding: 15px 0;
+  }
+
+  .lamp_image{
+    height: 150px;
   }
 }

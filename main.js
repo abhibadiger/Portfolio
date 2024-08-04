@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 // import "./style.css"
 
@@ -12,26 +12,26 @@ const camera = new THREE.PerspectiveCamera(
   1000
 )
 camera.position.x = 0
-camera.position.y = 1
-camera.position.z = 4
+camera.position.y = 0
+camera.position.z = 5
 
 // Lights
-const light = new THREE.PointLight(0xFFFFFF,100)
-light.position.set(0, 3, 5)
-light.castShadow = true
-scene.add(light)
+const spotLight1 = new THREE.SpotLight(0xFFFFFF, 100)
+spotLight1.position.set(0, 3, 5)
+spotLight1.castShadow = true
+scene.add(spotLight1)
 
-const light2 = new THREE.PointLight(0xFFA6A6,100)
-light2.position.set(0, 3, -5)
-light2.castShadow = true
-scene.add(light2)
+const spotLight2 = new THREE.SpotLight( 0xffffff, 100);
+spotLight2.position.set(0, 3, -5);
+spotLight1.castShadow = true
+scene.add(spotLight2);
 
 // Renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance"})
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" })
 renderer.setSize(canvas.clientWidth, canvas.clientHeight)
-renderer.render(scene,camera)
+renderer.render(scene, camera)
 renderer.shadowMap.enabled = true
-renderer.setClearColor(0xffffff,0)
+renderer.setClearColor(0xffffff, 0)
 canvas.appendChild(renderer.domElement)
 
 // Re-Size event handler
@@ -43,28 +43,76 @@ function onWindowResize() {
   render()
 }
 
+
 // OrbitControls
-const controls = new ArcballControls(camera, renderer.domElement)
+const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 controls.enableRotate = true
 controls.enableZoom = false
 controls.enablePan = false
 
+
 // FBXLoader 
 const fbxLoader = new FBXLoader()
 fbxLoader.load(
-    '3.fbx',
-    (object) => {
-        object.scale.set(.25, .25, .25)
-        object.position.set(0,-2, 0)
-        scene.add(object)
-    },
-    (xhr) => {
-        console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
-    },
-    (error) => {
-        console.log(error)
-    }
+  '3.fbx',
+  (object) => {
+    object.scale.set(.25, .25, .25)
+    object.position.set(0, -2, 0)
+    scene.add(object)
+  },
+  (xhr) => {
+    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+  },
+  (error) => {
+    console.log(error)
+  }
+)
+
+// Model
+const material = new THREE.MeshPhysicalMaterial({ color: 0x007571, roughness: 0.4, metalness: 0.6, reflectivity: 1})
+fbxLoader.load(
+  '3.fbx',
+  (object) => {
+    object.scale.set(.25, .25, .25)
+    object.position.set(-3, -2, 0)
+    object.children[2].material = material
+    object.traverse(function (child) {
+      if ((child).isMesh) {
+        (child).material = material
+      }
+    })
+    scene.add(object)
+  },
+  (xhr) => {
+    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+  },
+  (error) => {
+    console.log(error)
+  }
+)
+
+// WIREFRAME
+const wire_material = new THREE.MeshPhongMaterial({color: 0xA7A7A7,wireframe: true})
+fbxLoader.load(
+  '3.fbx',
+  (object) => {
+    object.scale.set(.25, .25, .25)
+    object.position.set(3, -2, 0)
+    object.children[2].material = wire_material
+    object.traverse(function (child) {
+      if ((child).isMesh) {
+        (child).material = wire_material
+      }
+    })
+    scene.add(object)
+  },
+  (xhr) => {
+    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+  },
+  (error) => {
+    console.log(error)
+  }
 )
 
 function render() {
@@ -77,5 +125,3 @@ function animate() {
   render()
 }
 animate()
-
-

@@ -5,8 +5,9 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+  <title>Abhishek Badiger Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     :root {
       padding: 0%;
@@ -17,19 +18,74 @@
 </head>
 
 <body>
-  <main class="content">
-    <!-- NAME -->
-    <h1 class="name">Abhishek Badiger</h1>
-    <!-- CANVAS -->
-    <div id="webgl" class="webgl-canvas"></div>
-    <!-- IMAGE -->
-    <h2 class="title">3D MODEL PROGRESS</h2>
-    <img src="lamp5.png" alt="asgas" class="lamp_image">
-    <!-- VIDEO -->
-    <h2 class="title">How I Animate Things</h2>
-    <video class="video" src="drum.mp4" controls autoplay loop></video>
+  <!-- NAME -->
+  <div class="first-box">
+    <h1 class="top-name">
+      3D Design's of
+      <hr>
+      <p class="name">Abhishek Badiger</p>
+    </h1>
+    <img src="public/Pngtreered_japanese_pagoda_3d_model_16100695.png" alt="" width="100%">
+  </div>
+  <hr>
+
+  <h2 class="title">3D MODELS</h2>
+  <hr>
+  <!-- LAMP -->
+  <main>
+    <div class="content">
+      <h2 class="title" style="text-align: left;">LAMP</h2>
+      <div id="webgl" class="webgl-canvas"></div>
+      <!-- IMAGE -->
+      <div class="split-images">
+        <img src="lamp5.png" alt="asgas" class="lamp_image">
+        <img src="lamp5.png" alt="asgas" class="lamp_image">
+      </div>
+    </div>
   </main>
+
+  <!-- DRUM BARREL -->
+  <main>
+    <div class="content">
+      <h2 class="title" style="text-align: left;">DRUM BARREL</h2>
+      <div id="webgl-2" class="webgl-canvas"></div>
+      <!-- IMAGE -->
+      <div class="split-images">
+        <img src="lamp5.png" alt="asgas" class="lamp_image">
+        <video src="drum.mp4" class="lamp_image" autoplay controls loop>
+      </div>
+    </div>
+  </main>
+
+  <!-- GUN -->
+  <main>
+    <div class="content">
+      <h2 class="title" style="text-align: left;">DRUM BARREL</h2>
+      <div id="webgl-3" class="webgl-canvas"></div>
+      <!-- IMAGE -->
+      <div class="split-images">
+        <img src="lamp5.png" alt="asgas" class="lamp_image">
+        <img src="lamp5.png" alt="asgas" class="lamp_image">
+      </div>
+    </div>
+  </main>
+
+  <hr>
+  
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <p>Follow Us</p>
+      <a href="#"><img class="icons" src="icons\instagram.png" alt="instagram"></a>
+      <a href="#"><img class="icons" src="icons\facebook.png" alt="facebook"></a>
+      <a href="mailto: asb1999@gmail.com"><img class="icons" src="icons\mail.png" alt="facebook"></a>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
   <script type="module" src="/main.js"></script>
+  <script type="module" src="/webgl2.js"></script>
+  <script type="module" src="/webgl3.js"></script>
 </body>
 
 </html>
