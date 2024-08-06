@@ -1,28 +1,18 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
-// import "./style.css"
 
-const canvas = document.getElementById('webgl-2');
+const canvas = document.getElementsByClassName('drum-canvas-1')[0];
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(
-  75,
-  canvas.clientWidth / canvas.clientHeight,
-  0.1,
-  1000
-)
-camera.position.x = 0
-camera.position.y = 0
-camera.position.z = -5
+const camera = Standard_Camera(canvas, 0, 0, -5);
 
 // Lights
-const spotLight1 = new THREE.SpotLight(0xFFFFFF, 100)
-spotLight1.position.set(0, 3, 5)
+const spotLight1 = new THREE.PointLight(0xFFFFFF, 100);
+spotLight1.position.set(0, 0, 10)
 scene.add(spotLight1)
 
-const spotLight2 = new THREE.SpotLight( 0xFFFFFF, 100);
-spotLight2.position.set(0, 3, -5);
-// spotLight1.castShadow = true
+const spotLight2 = new THREE.PointLight(0xFFFFFF, 100);
+spotLight2.position.set(0, 0, -10);
 scene.add(spotLight2);
 
 // Renderer
@@ -57,7 +47,9 @@ fbxLoader.load(
   'bb.fbx',
   (object) => {
     object.scale.set(.4, .4, .4)
-    object.position.set(2, -2, 0)
+    object.position.set(0, -2, 0)
+    // object.rotateY(130)
+    object.rotateY(1)
     scene.add(object)
   },
   (xhr) => {
@@ -68,30 +60,7 @@ fbxLoader.load(
   }
 )
 
-// WIREFRAME
-const wire_material = new THREE.MeshPhongMaterial({color: 0xA7A7A7,wireframe: true})
-fbxLoader.load(
-  'bb.fbx',
-  (object) => {
-    object.scale.set(.4, .4, .4)
-    object.position.set(-2, -2, 0)
-    object.children[2].material = wire_material
-    object.traverse(function (child) {
-      if ((child).isMesh) {
-        (child).material = wire_material
-      }
-    })
-    scene.add(object)
-  },
-  (xhr) => {
-    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
-  },
-  (error) => {
-    console.log(error)
-  }
-)
-
-function render() {
+function render() {  
   renderer.render(scene, camera)
 }
 
