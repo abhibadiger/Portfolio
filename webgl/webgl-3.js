@@ -13,17 +13,19 @@ const camera = new THREE.PerspectiveCamera(
 )
 camera.position.x = 0
 camera.position.y = 0
-camera.position.z = -5
+camera.position.z = -6
 
 // Lights
-const spotLight1 = new THREE.SpotLight(0xFFFFFF, 100)
-spotLight1.position.set(0, 3, 5)
+const spotLight1 = new THREE.SpotLight(0xffffff, 100);
+spotLight1.castShadow = true
+spotLight1.position.set(0, -2, 7)
 scene.add(spotLight1)
 
-const spotLight2 = new THREE.SpotLight( 0xFFFFFF, 100);
-spotLight2.position.set(0, 3, -5);
-// spotLight1.castShadow = true
-scene.add(spotLight2);
+const spotLight2 = new THREE.SpotLight(0xffffff, 100);
+spotLight2.castShadow = true
+spotLight2.position.set(0, 2, -7);
+scene.add(spotLight2)
+
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" })
@@ -42,14 +44,12 @@ function onWindowResize() {
   render()
 }
 
-
 // OrbitControls
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 controls.enableRotate = true
 controls.enableZoom = false
 controls.enablePan = false
-
 
 // FBXLoader 
 const fbxLoader = new FBXLoader()
@@ -58,7 +58,7 @@ fbxLoader.load(
   (object) => {
     object.scale.set(.5, .5, .5)
     object.position.set(-2, -1.5, 0)
-    // object.rotateY(130)
+    object.rotateY(2 * Math.PI)
     object.rotateY(1)
     scene.add(object)
   },
