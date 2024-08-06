@@ -15,15 +15,22 @@ camera.position.y = 0
 camera.position.z = 5
 
 // Lights
-const spotLight1 = new THREE.SpotLight(0xFFFFFF, 100)
-spotLight1.position.set(0, 3, 5)
-spotLight1.castShadow = true
+// Lights
+const spotLight1 = new THREE.SpotLight(0xffffff, 100);
+spotLight1.position.set(0, 0, 7)
 scene.add(spotLight1)
 
-const spotLight2 = new THREE.SpotLight( 0xffffff, 100);
-spotLight2.position.set(0, 3, -5);
-spotLight1.castShadow = true
-scene.add(spotLight2);
+const spotLight2 = new THREE.SpotLight(0xffffff, 100);
+spotLight2.position.set(0, 0, -7);
+scene.add(spotLight2)
+
+const spotLight3 = new THREE.SpotLight(0xffffff, 40);
+spotLight3.position.set(0, 5, 0);
+scene.add(spotLight3);
+
+const spotLight4 = new THREE.SpotLight(0xffffff, 40);
+spotLight4.position.set(0, -5, 0);
+scene.add(spotLight4);
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" })

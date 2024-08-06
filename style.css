@@ -5,7 +5,7 @@ body {
   padding: 0;
   font-family: "Gupter", serif;
   background: rgb(26 26 26);
-  background: aliceblue;
+  background: white;
   color: #2D2D2D;
   height: 100%;
   width: 100%;
@@ -59,41 +59,46 @@ main {
 
 .lamp_content {
   width: 80vw;
+  box-shadow:
+    5px 5px 10px black;
+    border-top: 2px solid black;
 }
 
 .lamp-canvas {
-  outline: none;
   height: 50vh;
   width: 100%;
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
   box-shadow:
     5px 5px 10px black;
-  border-radius: 2vh;
+  border-radius: 2vh 2vh 0 0;
   background: white;
-  margin-bottom: 10px;
 }
 
 .lamp-split-images {
   display: grid;
   grid-template-columns: 4fr 5fr;
   display: 80vw;
-  gap: 10px;
 }
 
 .lamp_image {
-  border-radius: 2vh;
   width: 100%;
   height: 350px;
   object-fit: cover;
-  box-shadow:
-    5px 5px 10px black;
+  }
+  
+  .lamp_image:nth-child(1) {
+  border-radius: 0 0 0 2vh;
+}
+.lamp_image:nth-child(2) {
+  border-radius: 0 0 2vh 0;
+  border-left: 2px solid black;
 }
 
 /* DRUM VIDEO CONTENT */
 
 .drum_content {
-  max-width: 80vw;
+  width: 80%;
   direction: rtl;
 }
 
@@ -102,12 +107,14 @@ main {
   grid-template-columns: 2fr 1fr;
   gap: 10px;
   align-items: center;
+  height: 80vh;
 }
 
 .top-down-drums {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  height: 80vh;
 }
 
 .drum-canvas-1 {
@@ -128,10 +135,16 @@ main {
     5px 5px 10px black;
 }
 
+.drum_video-images {
+  height: 80vh;
+  width: 100%;
+  object-fit: cover;
+}
+
 .drum_video {
   border-radius: 2vh;
-  max-width: 100%;
-  height: 100%;
+  width: 100%;
+  height: 50vh;
   object-fit: cover;
   box-shadow:
     5px 5px 10px black;
@@ -141,16 +154,42 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  height: 100%;
+  height: 30vh;
 }
 
-.drum_image{
-  height: 100%;
+.drum_image {
   border-radius: 2vh;
   width: 100%;
+  height: 100%;
   object-fit: cover;
   box-shadow:
     5px 5px 10px black;
+}
+
+
+/* GUN CANVAS */
+
+.gun_content {
+  width: 80%;
+}
+
+.gun-canvas {
+  outline: none;
+  height: 50vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow:
+    5px 5px 10px black;
+  border-radius: 2vh;
+  background: white;
+  margin-bottom: 10px;
+}
+
+.gun-images {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 10px;
 }
 
 

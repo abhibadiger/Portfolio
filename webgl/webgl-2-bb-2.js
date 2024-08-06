@@ -3,18 +3,26 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { Standard_Camera } from "./camera/Custom_Camera";
 
-const canvas = document.getElementById('webgl-2-bb-2');
+const canvas = document.getElementsByClassName('drum-canvas-2')[0];
 const scene = new THREE.Scene()
 const camera = Standard_Camera(canvas, 0, 0, -5);
 
 // Lights
-const spotLight1 = new THREE.PointLight(0xFFFFFF, 100);
-spotLight1.position.set(0, 0, 10)
+const spotLight1 = new THREE.SpotLight(0xffffff, 100);
+spotLight1.position.set(0, 0, 7)
 scene.add(spotLight1)
 
-const spotLight2 = new THREE.PointLight(0xFFFFFF, 100);
-spotLight2.position.set(0, 0, -10);
-scene.add(spotLight2);
+const spotLight2 = new THREE.SpotLight(0xffffff, 100);
+spotLight2.position.set(0, 0, -7);
+scene.add(spotLight2)
+
+const spotLight3 = new THREE.SpotLight(0xffffff, 40);
+spotLight3.position.set(0, 5, 0);
+scene.add(spotLight3);
+
+const spotLight4 = new THREE.SpotLight(0xffffff, 40);
+spotLight4.position.set(0, -5, 0);
+scene.add(spotLight4);
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" })
@@ -46,8 +54,8 @@ const wire_material = new THREE.MeshPhongMaterial({color: 0xA7A7A7,wireframe: tr
 fbxLoader.load(
   'bb.fbx',
   (object) => {
-    object.scale.set(.4, .4, .4)
-    object.position.set(0, -2, 0)
+    object.scale.set(.2, .2, .2)
+    object.position.set(0, -1, 0)
     object.children[2].material = wire_material
     object.traverse(function (child) {
       if ((child).isMesh) {
