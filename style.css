@@ -25,14 +25,15 @@ body {
 }
 
 .background {
+  position: relative;
   pointer-events: none;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: fixed;
-  background: url("background.jpg") fixed ;
+  /* background: url("background.jpg") fixed ; */
+  background: rgb(173 208 255) fixed ;
   background-size: cover;
   opacity: 0.75;
 }
@@ -128,7 +129,7 @@ body {
 }
 
 .gun_canvas {
-  height: 50vh;
+  height: 400px;
   width: 100%;
 }
 
@@ -142,6 +143,13 @@ body {
   height: auto;
 }
 
+@media screen and (max-width : 768px) {  
+  .gun_canvas {
+    height: 200px;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width : 480px) {
   .first-box {
     height: 20vh;
@@ -153,5 +161,10 @@ body {
 
   .title {
     font-size: 3vw;
+  }
+  
+  .gun_canvas {
+    height: 100px;
+    width: 100%;
   }
 }
