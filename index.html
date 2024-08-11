@@ -19,58 +19,63 @@
 
 <body>
   <!-- NAME -->
-  <div class="first-box">
-    <h1 class="top-name">
-      3D Design's of
-      <hr>
-      <p class="name">Abhishek Badiger</p>
-    </h1>
-    <img class="tower_image" src="public/Pngtreered_japanese_pagoda_3d_model_16100695.png" alt="">
+  <div class="background">
+    <div class="first-box">
+      <h1 class="top-name">
+        3D Design's of
+        <hr>
+        <p class="name">Abhishek Badiger</p>
+      </h1>
+      <img class="tower_image" src="public/Pngtreered_japanese_pagoda_3d_model_16100695.png" alt="">
+    </div>
   </div>
 
   <h2 class="title">3D MODELS</h2>
   <hr>
   <!-- LAMP -->
-  <main>
+  <div class="main">
     <div class="lamp_content">
-      <h2 class="title" style="text-align: left;">LAMP</h2>
-      <div id="webgl" class="lamp-canvas"></div>
-      <!-- IMAGE -->
-      <div class="lamp-split-images">
-        <img src="lamp5.png" alt="lamp images 1" class="lamp_image">
-        <img src="lamp5.png" alt="lamp images 2" class="lamp_image">
+      <h2 class="title">LAMP</h2>
+      <div class="lamp_layout">
+        <div class="lamp_canvas"></div>
+        <!-- IMAGE -->
+        <div class="lamp_images_layout">
+          <img src="lamp5.png" alt="lamp images 1" class="lamp_image">
+          <img src="lamp5.png" alt="lamp images 2" class="lamp_image">
+        </div>
       </div>
     </div>
 
     <!-- DRUM BARREL -->
+
     <div class="drum_content">
-      <h2 class="title" style="text-align: left;">DRUM BARREL</h2>
-      <div class="split-drum">
-        <div class="drum_video-images">
-          <video src="drum.mp4" class="drum_video" grid autoplay controls loop></video>
-          <div class="drum-split-images">
-            <img src="lamp5.png" alt="drum images 1" class="drum_image">
-            <img src="lamp5.png" alt="drum images 2" class="drum_image">
-          </div>
+      <h2 class="title">DRUM BARREL</h2>
+      <div class="drum_layout">
+        <div class="top_layout">
+          <img src="lamp5.png" alt="drum images 1" class="drum_image">
+          <div id="webgl-2-bb-1" class="drum_canvas_1"></div>
+          <div id="webgl-2-bb-2" class="drum_canvas_2"></div>
         </div>
-        <div class="top-down-drums">
-          <div id="webgl-2-bb-1" class="drum-canvas-1"></div>
-          <div id="webgl-2-bb-2" class="drum-canvas-2"></div>
+        <div class="bottom_layout">
+          <video src="drum.mp4" class="drum_video" grid autoplay controls loop muted></video>
+          <img src="lamp5.png" alt="drum images 1" class="drum_image">
         </div>
       </div>
     </div>
 
     <!-- GUN -->
     <div class="gun_content">
-      <h2 class="title" style="text-align: left;">OUT-LAW</h2>
-      <div id="webgl-3" class="gun-canvas"></div>
-      <!-- IMAGE -->
-      <div class="gun-images">
-        <img src="lamp5.png" alt="asgas" class="lamp_image">
-        <img src="lamp5.png" alt="asgas" class="lamp_image">
+      <h2 class="title">MARSHALL</h2>
+      <div class="gun_layout">
+        <div class="gun_canvas"></div>
+        <!-- IMAGES -->
+        <div class="gun_images">
+          <img src="lamp5.png" alt="asgas" class="lamp_image">
+          <img src="lamp5.png" alt="asgas" class="lamp_image">
+        </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <hr>
 
@@ -86,8 +91,6 @@
 
   <!-- SCRIPTS -->
   <script type="module" src="/main.js"></script>
-  <!-- <script type="module" src="/webgl2.js"></script>
-  <script type="module" src="/webgl3.js"></script> -->
 </body>
 
 </html>

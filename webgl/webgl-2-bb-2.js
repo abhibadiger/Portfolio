@@ -3,9 +3,9 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { Standard_Camera } from "./camera/Custom_Camera";
 
-const canvas = document.getElementsByClassName('drum-canvas-2')[0];
+const canvas = document.getElementsByClassName('drum_canvas_2')[0];
 const scene = new THREE.Scene()
-const camera = Standard_Camera(canvas, 0, 0, -5);
+const camera = Standard_Camera(canvas, 0, 0, 5);
 
 // Lights
 const spotLight1 = new THREE.SpotLight(0xffffff, 100);
@@ -54,8 +54,8 @@ const wire_material = new THREE.MeshPhongMaterial({color: 0xA7A7A7,wireframe: tr
 fbxLoader.load(
   'bb.fbx',
   (object) => {
-    object.scale.set(.2, .2, .2)
-    object.position.set(0, -1, 0)
+    object.scale.set(.4, .4, .4)
+    object.position.set(-4, -2, 0)
     object.children[2].material = wire_material
     object.traverse(function (child) {
       if ((child).isMesh) {

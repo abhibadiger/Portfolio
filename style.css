@@ -5,7 +5,7 @@ body {
   padding: 0;
   font-family: "Gupter", serif;
   background: rgb(26 26 26);
-  background: white;
+  background: whitesmoke;
   color: #2D2D2D;
   height: 100%;
   width: 100%;
@@ -16,22 +16,26 @@ body {
   text-align: center;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  gap: 10px;
-}
-
 .first-box {
   display: grid;
   grid-template-columns: 2fr 1fr;
   align-items: center;
   justify-items: center;
-  padding: 2rem;
-  background-color: aliceblue;
-  margin-bottom: 10px;
   height: 100vh;
+}
+
+.background {
+  position: relative;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: fixed;
+  /* background: url("background.jpg") fixed ; */
+  background: rgb(173 208 255) fixed ;
+  background-size: cover;
+  opacity: 0.75;
 }
 
 .top-name {
@@ -48,155 +52,102 @@ main {
   width: 100%;
 }
 
-.tower_image:hover {
-  scale: 120%;
-  transition-duration: 500ms;
-}
-
 .title {
   font-size: 4vw;
 }
 
-.lamp_content {
-  width: 80vw;
-  box-shadow:
-    5px 5px 10px black;
-    border-top: 2px solid black;
+.main {
+  padding: 0%;
+  width: 80%;
+  margin: auto;
 }
 
-.lamp-canvas {
-  height: 50vh;
-  width: 100%;
-  margin: 0;
-  /* padding: 0; */
-  box-shadow:
-    5px 5px 10px black;
-  border-radius: 2vh 2vh 0 0;
-  background: white;
-}
+/* Lamp Content */
 
-.lamp-split-images {
+.lamp_layout {
   display: grid;
-  grid-template-columns: 4fr 5fr;
-  display: 80vw;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #2D2D2D ;
+}
+
+.lamp_canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.lamp_images_layout {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .lamp_image {
   width: 100%;
-  height: 350px;
   object-fit: cover;
-  }
-  
-  .lamp_image:nth-child(1) {
-  border-radius: 0 0 0 2vh;
-}
-.lamp_image:nth-child(2) {
-  border-radius: 0 0 2vh 0;
-  border-left: 2px solid black;
 }
 
 /* DRUM VIDEO CONTENT */
 
-.drum_content {
-  width: 80%;
-  direction: rtl;
+.drum_layout {
+  border: 2px solid #2D2D2D ;
+} 
+
+.top_layout {
+  display: grid;
+  grid-template-columns: 6fr 3fr 3fr;
 }
 
-.split-drum {
+.bottom_layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 10px;
+  grid-template-columns: 6fr 4fr;
   align-items: center;
-  height: 80vh;
-}
-
-.top-down-drums {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  height: 80vh;
-}
-
-.drum-canvas-1 {
-  width: 100%;
-  height: 40vh;
-  background: rgb(245, 245, 245);
-  border-radius: 2vh;
-  box-shadow:
-    5px 5px 10px black;
-}
-
-.drum-canvas-2 {
-  width: 100%;
-  height: 40vh;
-  background: rgb(245, 245, 245);
-  border-radius: 2vh;
-  box-shadow:
-    5px 5px 10px black;
-}
-
-.drum_video-images {
-  height: 80vh;
-  width: 100%;
-  object-fit: cover;
+  justify-content: center;
+  align-items: center;
 }
 
 .drum_video {
-  border-radius: 2vh;
-  width: 100%;
-  height: 50vh;
+  max-width: 100%;
+  height: 100%;
   object-fit: cover;
-  box-shadow:
-    5px 5px 10px black;
-}
-
-.drum-split-images {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  height: 30vh;
 }
 
 .drum_image {
-  border-radius: 2vh;
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow:
-    5px 5px 10px black;
 }
 
 
 /* GUN CANVAS */
 
-.gun_content {
-  width: 80%;
-}
-
-.gun-canvas {
-  outline: none;
-  height: 50vh;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-shadow:
-    5px 5px 10px black;
-  border-radius: 2vh;
-  background: white;
-  margin-bottom: 10px;
-}
-
-.gun-images {
+.gun_layout {
   display: grid;
-  grid-template-columns: 5fr 4fr;
-  gap: 10px;
+  grid-template-columns: 1fr;
+  width: 100%;
+  border: 2px solid #2D2D2D;
 }
 
+.gun_canvas {
+  height: 400px;
+  width: 100%;
+}
+
+.gun_images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
 .icons {
   width: 30px;
   height: auto;
-  margin: 0.25rem;
+}
+
+@media screen and (max-width : 768px) {  
+  .gun_canvas {
+    height: 200px;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width : 480px) {
@@ -211,13 +162,9 @@ main {
   .title {
     font-size: 3vw;
   }
-
-  .lamp-canvas {
-    height: 20vh;
-    width: 100%;
-  }
-
-  .lamp_image {
+  
+  .gun_canvas {
     height: 100px;
+    width: 100%;
   }
 }
