@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 // import "./style.css"
 
-const canvas = document.getElementById('webgl-3');
+const canvas = document.getElementsByClassName('gun_canvas')[0];
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(
   75,

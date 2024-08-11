@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 
-const canvas = document.getElementById('webgl');
+const canvas = document.getElementsByClassName('lamp_canvas')[0];
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(
   75,
